@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>lo ku</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{
+      height:100%;
+      font-family:'Baloo 2',sans-serif;
+      background:#fff6f8;
+      color:#d27d98;
+      -webkit-font-smoothing:antialiased;
+      -webkit-text-size-adjust:100%;
+      scroll-behavior:smooth;
+      overscroll-behavior:contain;
+    }
+    body{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .page{
+      position:absolute;
+      inset:0;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:24px;
+      transition:opacity .6s ease, transform .5s ease;
+      opacity:0;
+      pointer-events:none;
+    }
+    .page.visible{
+      opacity:1;
+      pointer-events:auto;
+      transform:translateY(0);
+      z-index:2;
+    }
+    .page.hidden{
+      opacity:0;
+      pointer-events:none;
+      transform:translateY(12px);
+      z-index:1;
+    }
+    .panel{
+      width:100%;
+      max-width:390px;
+      background:rgba(255,255,255,0.96);
+      border-radius:20px;
+      padding:32px 26px;
+      max-height:calc(100vh - 48px);
+      overflow-y:auto;
+      -webkit-overflow-scrolling:touch;
+      text-align:center;
+      backdrop-filter:blur(8px);
+      scrollbar-width:none;
+      box-shadow:0 4px 18px rgba(0,0,0,0.08);
+      animation:fadeIn .8s ease;
+    }
+    .panel::-webkit-scrollbar{display:none}
+    h1,h2{
+      color:#d27d98;
+      font-weight:600;
+      font-size:clamp(17px,4vw,21px);
+      margin-bottom:18px;
+      text-align:center;
+    }
+    .sentence{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:10px;
+      font-size:clamp(15px,4vw,18px);
+      margin:22px 0;
+      line-height:1.6;
+    }
+    input{
+      width:120px;
+      border:none;
+      border-bottom:2px solid #f4c9d5;
+      background:transparent;
+      text-align:center;
+      font-size:clamp(15px,4vw,18px);
+      color:#d27d98;
+      letter-spacing:3px;
+      font-family:'Baloo 2',sans-serif;
+      transition:all .25s ease;
+      padding:6px 0;
+    }
+    input::placeholder{color:#e8b9c7}
+    input:focus{
+      outline:none;
+      border-color:#e7a9ba;
+      width:135px;
+    }
+    button{
+      margin-top:20px;
+      width:100%;
+      padding:13px 0;
+      background:linear-gradient(to right,#f7b7c9,#f8c8d7);
+      color:#fff;
+      border:none;
+      border-radius:10px;
+      font-weight:500;
+      font-size:clamp(15px,4vw,17px);
+      cursor:pointer;
+      transition:all .25s ease;
+      touch-action:manipulation;
+    }
+    button:hover{
+      transform:scale(1.03);
+      background:linear-gradient(to right,#f4a9be,#f6baca);
+    }
+    .message{
+      color:#d27d98;
+      margin-top:12px;
+      font-weight:400;
+      font-size:clamp(13px,3.5vw,15px);
+      min-height:22px;
+    }
+    .content-title{
+      font-size:clamp(18px,4.5vw,22px);
+      font-weight:600;
+      margin-bottom:16px;
+      text-align:center;
+    }
+    .content-text{
+      font-size:clamp(15px,4vw,18px);
+      line-height:1.85;
+      text-align:justify;
+      text-align-last:center;
+      color:#d27d98;
+      word-break:break-word;
+      white-space:pre-line;
+      letter-spacing:.3px;
+      padding:0 2px;
+    }
+    @keyframes fadeIn{
+      from{opacity:0; transform:scale(0.98);}
+      to{opacity:1; transform:scale(1);}
+    }
+    @media(max-height:600px){
+      .page{
+        align-items:flex-start;
+        padding-top:28px;
+        padding-bottom:28px;
+      }
+      .panel{max-height:calc(100vh - 56px)}
+    }
+  </style>
+</head>
+<body>
+  <div id="login" class="page visible">
+    <div class="panel">
+      <h2>Gui Bin</h2>
+      <div class="sentence">
+        <span>uiia</span>
+        <input id="password" type="text" placeholder="" />
+      </div>
+      <button onclick="login()">Binh dien not nhe</button>
+      <p id="message" class="message"></p>
+    </div>
+  </div>
+
+  <div id="home" class="page hidden">
+    <div class="panel">
+      <h1 class="content-title">Gui ku</h1>
+      <div class="content-text" id="homeContent">
+
+Tính đến nay là 144 ngày r, chưa một ngày nào t dừng nghĩ về chuyện này. T đã từng nghĩ rằng mình chẳng nhận được gì từ mối quan hệ này. Nhưng PHẢI CHO ĐẾN TẬN GIỜ t mới nhận ra, điều quý giá nhất mà t nhận được chính là những kỷ niệm cùng Bình. Có thể với Bình nó chẳng là gì cả nhưng với t thì nó đẹp lắm, t nhớ tường tận tất cả mọi thứ lun và t thật sự biết ơn vì đã có chúng ^^ Với những thứ mà t làm cho Bình, t vẫn luôn nhận lại được là nụ cười của Bình và t vẫn luôn hài lòng với điều đó (Bình cười nhìn yêu v) T cũng chưa từng hối hận cũng như chưa từng cảm thấy Bình không xứng để nhận được những thứ đó từ t, vậy mà sao sau chia tay t cứ nói cái gì ý. Tại sao một thứ đơn giản ngay trước mắt như vậy mà phải đến giờ t mới nhận ra nhỉ ? T đần thật, nếu k muốn nói là ngu ^^ Sau lần trước thì t cũng thấy sai rồi. T hơi quá thật, cho t xin lỗi nhé. Việc được nói chuyện với Bình vẫn luôn mang lại cho t một cảm giác thoải mái dù cho có là cãi nhau. Sự thoải mái này vô tình khiến t bị cuốn theo mà không giữ được cho mình một cái đầu lạnh để cư xử sao cho chuẩn mực ^^ 
+
+
+
+Bản thân t trong mqh t luôn mải mê chạy theo Bình mà không nhận ra được rằng t đã mất đi giá trị của chính mình. T luôn luôn luôn đặt Bình lên trên bản thân mình, điều này nghĩa là t rất yêu Bình. Nhưng mà một cái cây được tưới quá nhiều nước sẽ bị úng, một cái cây khoẻ cần một lượng nước vừa đủ. Nhưng t lỡ cho nhiều nước quá rồi, biết sao h... Bình cho t có cảm giác như chúng ta là một gia đình v. Từng cái ôm, từng bữa ăn, từng giấc ngủ, tất cả đều mang đến cảm giác an toàn, bình yên, thứ mà t muốn nó lặp đi lặp lại mãi. Việc bọn mình dừng lại khiến cho t nhận ra rằng bản thân mình trước giờ chẳng phát triển được cái gì cả. Hiện tại t sẽ cố gắng tập trung vào bản thân mình ^^
+
+
+
+
+
+Đôi chút về bản thân t hiện tại, phần này Bình có thể không đọc ^^
+
+Hiện tại t đang làm bếp tại umai29, cái chỗ mà first date bọn mình đi ấy ^^
+ T làm ở cở sở Trần Đại Nghĩa khá gần nhà nên t có thể đi bộ ra được. Lịch làm của t khá căng phần vì t không muốn cứ xin tiền bố mẹ mãi chỉ để dùng cho sở thích của t, phần vì t muốn bản thân mình mệt mỏi hết sức có thể để t có thể chìm vào giấc ngủ dễ dàng hơn thay vì cứ khóc lóc và lạm dụng thuốc ngủ ^^ T hay làm đến tối muộn sau đó lấy xe đạp và đạp khoảng 15-20km mỗi buổi, tất nhiên sẽ có những buổi t lười mà tìm lí do để không đi. Những lần như thế t luôn giữ suy nghĩ là nếu như hôm nay nghỉ thì mai mình sẽ phải làm cả phần của ngày hôm nay. Bình có thể áp dụng thử suy nghĩ này cho việc học, hiệu quả lắm ^^ Với cả Bình xem đthoai ít thôi nhé, lúc nào Bình chán quá thì dọn nhà ý, vừa sạch vừa đỡ brainrot. Giờ t còn không chơi game mấy, 1 tuần nghỉ 1 thì chơi vào ngày đó thôi, điện thoại thì một ngày t sd 5 tiếng là nhiều ^^
+
+Mỗi lần đạp xe như vậy thì khi t về t sẽ mệt và dễ ngủ hơn một chút so với trước. Thi thoảng t vẫn bị bật dậy giữa lúc ngủ, những lần như vậy thì thường là do t mơ những giấc mơ quá là khó tin. Mọi giấc mơ mà t mơ luôn luôn có Bình ở trong đó, chỉ khác nhau về vai trò. Lúc thì Bình có ảnh hưởng lớn, lúc thì đơn giản là Bình chỉ xuất hiện ở đó thôi, nhưng luôn luôn xuất hiện. Giờ t quen hơn một chút với việc này rồi chứ hồi 2 tháng trước lúc nào tim t cũng đau khi mơ ^^ (Tự nhiên t nhớ cái lần tim t đau nhói, cảm giác như sắp nổ tung, ngày hôm đó là một ngày sau khi t qua Bình và xin cơ hội. Lúc đó t học tiếng anh, ngồi trong lớp mà cảm giác trống rỗng, chẳng muốn làm gì cả, chẳng biết phải làm cả, đầu t chạy lại hết tất cả những kỷ niệm đã từng có cùng với Bình kèm theo việc tim đau nhói, nó đau cực cực ấy, khó thở lắm. Lần đầu tim t đau đến nthe). T chưa từng ở trong trạng thái tìm kiếm một mqh, từ trước khi quen Bình đến hiện tại và sau này thì đều sẽ là nthe. Giờ t sẽ chỉ tập trung vào chính t thôi. Nhưng t sẽ vẫn giữ chắc nịch một suy nghĩ rằng: 
+
+"Dù Bình có như thế nào đi nữa, tui cũng vẫn sẽ yêu Bình"
+
+Nên là t sẽ không đi tìm người "phù hợp hơn" đâu vì người phù hợp đó chỉ có một thôi, không có ai khác đâu ^^ Còn Bình, Bình yêu ai cũng được, thích ai cũng được, cũng đâu có liên quan đến cảm xúc của t đâu ^^ cứ coi như t đơn phương đi.
+
+T sẽ thi thoảng xuất hiện với tâm thế vui vẻ, t biết giới hạn. Khi nào Bình không còn thấy t, thì điều đó có nghĩa là t đã đến điểm cuối rồi ^^
+
+
+
+
+Làm rõ:
+
+Tất cả những gì t nghĩ, những gì t muốn nói đã được nói hết. Đừng suy nghĩ gì sâu xa hay nghĩ linh tinh nhé, t nói thế thì có nghĩa là như thế ^^
+ 
+Mục đích gửi đi của tất cả những thứ này: Cảm thấy bản thân sẽ vui hơn và nhẹ lòng hơn nếu gửi đi cái này
+
+Mong muốn nhận lại: Chẳng muốn được nhận lại một cái gì cả chỉ mong Bình đừng toxic sau khi nhận được thư, cảm giác bị người từng nói là hạnh phúc khi quen mình chửi nó ... lắm
+
+Cảm xúc với Bình: Chẳng rõ có còn gọi là yêu không nhưng vẫn có cái gì đó đặc biệt ^^ với Bình thì mình chưa đến 1 năm nhưng với t thì t yêu Bình 1 năm r đó, nếu như t đã làm được vậy suốt 1 năm rồi thì sao t lại không làm được điều đó thêm 10 năm nữa, chỉ là thêm một số 0 vào thôi mà ^^ Và sau 10 năm, thêm một số 0 nữa thôi, đơn giản ^^
+
+Hối hận vì những gì mình làm cho Bình hồi còn trong mối quan hệ: Không và chưa từng có suy nghĩ hối hận ^^
+
+Hối hận vì những gì mình làm sau khi ra khỏi mqh: Ê cái này hối hận vcc
+
+Còn nhớ Bình không: T nhớ nhiều chứ, t vẫn luôn nhớ đến Bình mỗi khi nào t rảnh dù rằng giờ lịch t rất bận ^^ khi t nhớ đến Bình thì t vẫn luôn vui vẻ đón nhận những dòng ký ức đó vì t thấy nó rất đẹp. Hôm trước t tự nhiên nhớ đến lúc Bình mặt tròn xoe không son phấn ôm hải cẩu ngủ xong t bật cười cơ, t ngáo v ^^  lúc đó Bình đáng yêu vch, muốn hôn cho phát. Cảm giác cứ giống như một gia đình vậy ^^
+
+Mong muốn quay lại: Nếu t nói không muốn thì thành ra là dối lòng, nhưng nếu t nói muốn thì cũng chẳng phải là sự muốn trọn vẹn. Phần lớn là do bản thân t không còn muốn níu kéo Bình nữa, dù t còn tình cảm, dù t thấy bọn mình rất hợp nhưng Bình không còn thấy vậy và cũng như Bình hết tình cảm rồi thì thôi vậy, nghe buồn nhưng t sẽ phải chấp nhận thôi. Phần nữa do t sợ t sẽ lại sai như lần trc, t sẽ lại bị cuốn vào Bình và đánh mất chính mình. Cuối cùng là t cảm thấy ổn với bản thân mình hiện tại, t ổn với việc một mình ^^. Nhưng nếu như Bình muốn thử, sẽ luôn luôn có 1 vị trí cho Bình. Chỉ là lần này Bình sẽ không còn làm mặt trời nữa, bởi trung tâm của hệ mặt trời lần này sẽ là bản thân t. Bình sẽ làm trái đất nhé, một hành tinh không quá gần cũng không quá xa, ở một vị trí đặc biệt, bé bé xinh xinh và là hành tinh đặc biệt nhất trong hệ mặt trời của t ^^
+
+Tại sao lại phải làm ra cái web thư như thế này: Nó đặc biệt nên t làm cho người đặc biệt ^^
+
+
+
+
+
+Linh tinh một chút
+
+Ca nào mà t phải rửa bát thì t toàn nghĩ vui là cuộc đời t chỉ rửa bát. Bé thì rửa bát cho bố mẹ, lớn thì rửa bát cho ny, ny bỏ xong ra ngoài lm việc lại rửa bát tiếp :D nhớ v
+
+Trc hồi mới quen Bình cứ gợi ý cái bà beabadoobee mà t nghe thấy k hợp lắm. Tháng trước t thấy bà ấy trên mạng xong t nhớ ra t với Bình khá hợp nhau về mặt âm nhạc nên mở ra nghe thì thấy lại thấy hợp. H bà thành artist tủ của t rồi, từ những bài nổi thì bài glue song hay v nhưng t thích bài the perfect pair hơn vì đó là một bài hát mà t có thể liên hệ. Những bài ít nổi hơn mà hay thì Bình có thể nghe bài sway, bài này là bà cover lại nhưng mà nghe hay lắm ^^ take a bite, spacing out, everest, ... Nhạc bà này tui nghe hết k sót bài nào ^^ cam on Binh
+
+Sao cứ có người nghĩ là t chửi Bình thế, Bình đã lmjv? T đã chửi Bình đc câu nào chưa hay là t bị chửi?
+
+Hôm trc t làm mất chìa khoá nhà xong t lục loạn cả cái nhà lên, thứ t quan tâm kphai là cái chìa khoá mà là cái con vịt. Sau khi tìm loạn hết cả lên thì t cũng tìm đc, sợ vc ^^
+
+Cái bức thư trước t gửi nó có đoạn dài ở bên dưới t giấu, t nghĩ Bình chưa đọc. Link bức thư đấy đây nhé: https://ltsthd.github.io/mot-buc-thu-gui-den-Lam-Binh/
+Nếu Bình muốn đọc ^^
+
+Viết kiểu thư ntn có ý nghĩa v vì n sẽ tồn tại mãi mãi. Chi khi internet sập thì n mới biến mất thôi chứ t k xoá đâu ^^
+
+T lưu 1227 ảnh có Bình(con số thực có thể lớn hơn vì sau check lại dthoai t vẫn còn sót nhiều), sau chtay t chuyển hết lên máy tính xong t xoá ở đth để
+
+Cá nhân t thấy những gì là cốt lõi tạo nên con ng của của cả hai bọn mình rất hợp nhau, có chăng không hợp là do không muốn hợp thôi. Nhưng đây là t thấy thôi, còn Bình thấy không hợp thì t vui vẻ chấp nhận thôi.
+
+Dù mọi chuyện đã qua lâu lắm rồi mà chẳng hiểu sao t vẫn mơ về Bình suốt, t toàn bị bật dậy giữa đêm. Hôm nào ngủ ngon thì t k nhớ mình mơ gì đâu, nhưng mà ít hôm ngủ ngon lắm. Đang ngủ cứ bị bật dậy kèm theo sự hỗn loạn về cảm xúc. Chắc t cần thêm thời gian, để quen với việc gặp Bình trong giấc mơ, không phải cần thời gian để quên đi ^^ Đây là do nhớ quá nên não nó tự sắp xếp để t được Bình trong mơ à :D
+
+Giờ t mới hiểu vì sao người ta nói là nằm bên đúng người sẽ khiến ta rơi vào giấc ngủ dễ dàng hơn. Nằm cạnh Bình làm t buồn ngủ vc ấy, cảm giác an toàn lắm, nằm 1 lúc là lăn ra ngủ ^^ Giờ t trằn trọc mãi mới ngủ được, mà ngủ cũng chẳng ngon.
+
+Nhớ căn phòng bé có cái đệm trên gác xép, nhớ những lần rửa bát, nhớ những lần dọn nhà, nhớ những lần nấu ăn, nhớ những lần bị mắng, nhớ cục bông màu xanh, nhớ người từng ôm nó, nhớ những giấc ngủ, nhớ những cái ôm và cả những cái hôn
+, nhớ những cuộc trò chuyện, nhớ...
+
+thôi dài dòng linh tinh quá
+
+tuổi mới chúc ku mạnh khoẻ, vui vẻ và mãi đáng yêu nhé
+
+bye ku
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showHome(){
+      const login=document.getElementById('login');
+      const home=document.getElementById('home');
+      login.classList.remove('visible');
+      login.classList.add('hidden');
+      setTimeout(()=>{
+        home.classList.remove('hidden');
+        home.classList.add('visible');
+        home.querySelector('.panel').scrollTop=0;
+      },400);
+    }
+    function login(){
+      const pw=document.getElementById('password').value.trim();
+      if(pw==='iuiiiai'){showHome();}
+      else{document.getElementById('message').innerText='iuiiiai co ma :( Binh dung quen nhe';}
+    }
+    window.addEventListener('resize',()=>{
+      const el=document.activeElement;
+      if(el&&(el.tagName==='INPUT'||el.tagName==='TEXTAREA')){
+        setTimeout(()=>{el.scrollIntoView({behavior:'smooth',block:'center'});},200);
+      }
+    });
+  </script>
+</body>
+</html>
